@@ -5,8 +5,7 @@ The black active arm uses a 5V 6A power adapter, while the white passive arm use
 The code in this tutorial repository is maintained at the stable version of Lerobot tested before March 1, 2026. Currently, Huggingface has made a very substantial upgrade to Lerobot, adding a large number of new features. If you need to experience the latest tutorial, please follow [ the official documentation for operation ](https://huggingface.co/docs/lerobot/lekiwi). 
 
 [Lekiwi](https://github.com/SIGRobotics-UIUC/LeKiwi) is a fully open-source robot car project initiated by [SIGRobotics-UIUC](https://github.com/SIGRobotics-UIUC). It includes detailed 3D printing files and operation guides, and is designed to be compatible with the [LeRobot](https://github.com/huggingface/lerobot/tree/main) imitation learning framework. It supports the SO101 robotic arm, thereby enabling a complete imitation learning process.
-
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTU2MGUwZTk5NWQzNmFkNmRjYTUyNDNlZTZiNjc1NDRfS2w2OG0ya3VWOE5UV25vc2NNdmZaY0U4a2Ztc0l4NEJfVG9rZW46S1RWSmJ0V3hub3JMWml4bThhWWNqemxtbkhkXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/96d602cc15b941f8acc92ba1f3e6ff81.png)
 
 ## Main Features
 
@@ -16,13 +15,22 @@ The code in this tutorial repository is maintained at the stable version of Lero
 4. **Compatible with Nvidia** : Can be used in conjunction with reComputer Mini J4012 Orin NX 16 GB. 
 5. **Multi-scenario Application**: Suitable for education, scientific research, automated production, and robotics fields, helping users achieve efficient and precise robot operations in various complex tasks.
 
-JUXI is only responsible for the quality of the hardware itself. Tutorials are strictly updated in accordance with official documentation. If you encounter software issues or environment dependency issues that you are truly unable to resolve, please promptly report the issues to [LeRobot Platform](https://github.com/huggingface/lerobot) or [LeRobot Discord Channel](https://discord.gg/8TnwDdjFGU).
+> JUXI is only responsible for the quality of the hardware itself.
+> Tutorials are strictly updated in accordance with official
+> documentation. If you encounter software issues or environment
+> dependency issues that you are truly unable to resolve, please
+> promptly report the issues to [LeRobot
+> Platform](https://github.com/huggingface/lerobot) or [LeRobot Discord
+> Channel](https://discord.gg/8TnwDdjFGU).
 
 **Attention**
 
-- All servos in the Lekiwi chassis require a 12V power supply. For users who use a 5V robotic arm, we provide a 12V to 5V step-down conversion module. Please note that you need to modify the circuit yourself.
-- 12V Power Supply - If needed, you can select this option at checkout. If you already have a 12V power supply, simply convert the power output interface to a 5521 DC plug.
-- Raspberry Pi controller and camera - these need to be purchased separately through the order interface. 
+> - All servos in the Lekiwi chassis require a 12V power supply. For users who use a 5V robotic arm, we provide a 12V to 5V step-down
+> conversion module. Please note that you need to modify the circuit
+> yourself.
+> - 12V Power Supply - If needed, you can select this option at checkout. If you already have a 12V power supply, simply convert the
+> power output interface to a 5521 DC plug.
+> - Raspberry Pi controller and camera - these need to be purchased separately through the order interface.
 
 ## Bill of Material (BOM)
 
@@ -142,18 +150,24 @@ This usually installs ffmpeg 7.X compiled with the libsvtav1 encoder for your pl
 conda install ffmpeg=7.1.1 -c conda-forge
 ```
 
-[Linux only] Install the build dependencies for ffmpeg and compile ffmpeg with libsvtav1 support from source, and ensure that the ffmpeg executable used is correct, which can be confirmed via `which ffmpeg`.
+> [Linux only] Install the build dependencies for ffmpeg and compile
+> ffmpeg with libsvtav1 support from source, and ensure that the ffmpeg
+> executable used is correct, which can be confirmed via `which ffmpeg`.
+> 
+> If you encounter the following error, you can also use the above
+> command to resolve it.
 
-If you encounter the following error, you can also use the above command to resolve it. 
-
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=YWM2ODA3YmMxNWM0NjVhOWZkZDUyNTAyMGQzYmUzYjFfendHYlJsUXNXMUpKMktMWXQzYzY4MHBrRk55ME5HTG1fVG9rZW46Q2RKRWJ1cHg4b2tvU2x4eGxHQ2NJQTJYbmdkXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
-
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/a6c3aadb799f4f549188ad2ad6b6fe3f.png)
 ### 6. Install LeRobot with feetech motor dependencies:
 
 ```Bash
 cd ~/lerobot && pip install --no-binary=av -e ".[feetech]"
 pip install -e ".[lekiwi]"
 ```
+### 7. Set the connection time
+Find `config_lekiwi.py under the lerobot\src\lerobot\robots\lekiwi `directory
+ set connection_time_s: int = 7200 # which is 2 hours 
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/4a009f7739324038bef6122bda3d3227.png)
 
 ## C. Install LeRobot on a laptop
 
@@ -168,8 +182,8 @@ On your computer:
 ### 2. Restart the Shell
 
 Copy and paste the following command in your shell:`source ~/.bashrc` or for Mac users:`source ~/.bash_profile` or `source ~/.zshrc` (if you are using zshell)
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/b28017889a0a470db17163fb724589cc.png)
 
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=YWM5ZGE4MjcxYWI5NTM3ZTg0Mjc1ODE3YjEwZDk5ODFfaUxYR1hJMWpEbm1TYURBb29jNWlyQ1FNZGU1dkdzNFhfVG9rZW46UEpmQ2JLcG5ib2xvb3R4RUZoRWNDN1pDbjdlXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
 
 ### 3. Create and activate a new Conda environment for LeRobot
 
@@ -197,19 +211,22 @@ When using `miniconda`, install `ffmpeg` in your environment:
 conda install ffmpeg -c conda-forge
 ```
 
-This usually installs ffmpeg 7.X compiled with the libsvtav1 encoder for your platform. If libsvtav1 is not supported (you can check the supported encoders via `ffmpeg -encoders`), you can: 
+> This usually installs ffmpeg 7.X compiled with the libsvtav1 encoder
+> for your platform. If libsvtav1 is not supported (you can check the
+> supported encoders via `ffmpeg -encoders`), you can: 
+> 
+> 【For all platforms】Explicitly install ffmpeg 7.X:
+> 
+> ```conda install ffmpeg=7.1.1 -c conda-forge ```
+> 
+> [Linux only] Install the build dependencies for ffmpeg and compile
+> ffmpeg with libsvtav1 support from source, and ensure that the ffmpeg
+> executable used is correct, which can be confirmed via `which ffmpeg`.
+> 
+> If you encounter the following error, you can also use the above
+> command to resolve it.
 
-【For all platforms】Explicitly install ffmpeg 7.X:
-
-```
-conda install ffmpeg=7.1.1 -c conda-forge
-```
-
-[Linux only] Install the build dependencies for ffmpeg and compile ffmpeg with libsvtav1 support from source, and ensure that the ffmpeg executable used is correct, which can be confirmed via `which ffmpeg`.
-
-If you encounter the following error, you can also use the above command to resolve it. 
-
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=MTM4MGJmMGNhMGUzNGE5YWI2MjgzZmRlZWJlYzhkNDZfcFhsRU82VU1QSVBCSDZ6dlByNjJ2UWFiTWRTRzBwdEdfVG9rZW46Q2VYZmJSUUxKbzlGUW54NE5QSWNySUp0blVjXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/3cdd10c27984448c83587e1a26ceecdf.png)
 
 ### 6. Install LeRobot with feetech motor dependencies:
 
@@ -219,8 +236,8 @@ pip install -e ".[lekiwi]"
 ```
 
 # Configure Motor 
-
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=NjZjMjRmNDZmMDhmZjAzNTNmZGE5NjdjOTYwYjAwNzZfTnd0Z2xVMGc1VjBzQktkMTV3bkQ4RzM5dUxVWmdQRzlfVG9rZW46THFpTWJNQWNGb0RPR2x4NVZPUmNDUDBJblNoXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=MjRjOTJmNDg1MTk3YWU1NzhiZGVmMGQ5NDM1ZDc0N2ZfRnd4Z1JzeWkzVjVEcDlKcG5uQkxzUmluc3lWQURsZ0dfVG9rZW46RFZMR2JNRm43b3REVDh4WXpnSmNhSEpCbm9oXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/e7f41dc749ea4404839721e2c35e8a67.png)
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/2e90c6ad370945c6a26dc8d88ce54b28.png)
 
 ### **1. Find the USB port associated with the robotic arm**
 
@@ -250,8 +267,8 @@ lerobot-setup-motors \
     --robot.type=lekiwi \
     --robot.port=/dev/tty.usbmodem58760431551 # <- paste here the port found at previous step
 ```
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/a5fd51a0e7054a4f9a07b7e35bc1b46f.png)
 
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=YmRmYjVhOWI1MTViZjQyMTkyYjdhNGEwNjRjYzliYWNfeWxEcGVwTkI2V3ZGZldFN2ZiMUI3eDR2VDFjSk0xcTBfVG9rZW46TVA2M2JJU1l0b0JaRnN4NlhYamNTWlBXbnNiXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
 
 ### 3. Set up the domestic mirroring of HuggingFace
 
@@ -286,9 +303,9 @@ source ~/.zshrc
 
 https://huggingface.co/settings/tokens
 
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=MzYwZDhhNWI2MmVkYmJjN2M4NmUzMTcyMjJjN2UzNzZfOWFMNDdtR1RNeFFjR0l2cnl2ZE5RRk1vb3V3NGcwa09fVG9rZW46RzVkeGJjc0tSbzFIREx4WG85WGNpNzhMbjdkXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
-
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=NzI3YWI1YjVmMWRhMDdlNWNiYWYwNTg4NTIyZDViMDZfOWlFTWd4UndnU1dqb2VqdGE5VTdPUHBNU2t2OW1TQnlfVG9rZW46VTdSV2JieUpub1VUVFp4Z2xpOWNTNW81blAxXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=YThjMzNkMjJhYWMzYTlmOWEyNjAxOWMyODIxYmRkZGNfMkcwMVY2MWdNNXR6b2FkU3F4WmlnbGo2NkxCdHdoaTJfVG9rZW46TTJJd2JuTGh5b3ZwUDZ4c0N6eWNNUDRjbnpkXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/1ba002859ac043a6bf8a5cc6cf24a132.png)
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/d6ec7ba2ccf9425d82bd5a3bc6f9a8a7.png)
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/a67d6112bf3c497a86353a17ed0d2be8.png)
 
 #### ② Record Token
 
@@ -305,17 +322,13 @@ hf auth login
 
 hf auth whoami
 ```
-
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=MzFhYmRhYThhY2NhNzgxNjBmNmFjODg4MzcxODE2MjVfUnNpUXpMNkNWbGpsTFdJYnJ6TlI0SktmVkpvQmtpeHJfVG9rZW46RzBFUGI1N0dpb0lmQ1N4NkNhVmN5VnNBbnFmXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
-
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/87e82f8589f343ad8ae6e67714f38c10.png)
 #### ④Create Dataset Repo
 
 **Record the Owner and Dateset name, which are the <hf_username> and <dateset_repo_id> required later** 
-
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDJmMzcyY2UyMTQwMjBjZTFiNDI5ZDljNDlkZjU3YTVfTDNlTXRFNE9wU01wUFBYd3JTeEhPR1BWTWxMMlQxZkpfVG9rZW46SkFzNmJkVkFlb3VTbHJ4YmlvRmNIMG9LbnZnXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTYyN2IyYzYxMGVjNjNhNGE1NTMyYTU2NGU3ZmU2ZjRfWkRNamp0bldIaTlRbFA0c3ZaR2RDNndaWW5tR2VDa3JfVG9rZW46R1pobWJ6R0lib1VKQmJ4Z21GeGNTMFBlbmFjXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
-
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=OTA5ODY3MGUwYjVlYWYzNDJlODYyZDNkZDViYjg5NDlfekJ1SDNDc0c3azRtdUtrOFRyMWh2UXRJRW9yWlN5VUlfVG9rZW46TVZiSmIxeU5Tb2FCbVR4TWtGZ2NMTWRybnFoXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
-
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/30c5c435b0aa415abcd22098a16a14bb.png)
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/a7cda0e6d66a4c14afed19db32916cd9.png)
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/aa90829facd2436c960d39e8f2960052.png)
 ### 4. Update the configuration!!!
 
 The configuration files on LeKiwi LeRobot and the laptop should be consistent. First, we need to find the **IP address** of the Raspberry Pi for the mobile robotic arm. This is the same IP address used for SSH. We also need to find the **USB port** of the active arm servo driver board on the laptop and the **port of the servo driver board on LeKiwi**. These ports can be found through the following script.
@@ -329,18 +342,15 @@ sudo chmod 666 /dev/ttyACM1
 
 Important Note: Now that you have obtained the port number of the active arm and the IP address of the Lekiwi robotic arm, please update **ip** in the network configuration, update **port** in the active arm configuration, and update **port, remote_ip** in the LeKiwi configuration.
 
-Modify these four files under the example\lekiwi directory
-
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=NDMxNmQzMmRmOTMxNmVjMDI3NmYwNTFhYmFmYzUwMzhfTjFHME1hd1FFTVVhT3ZYS1pHMnNkNkZnbUY4azJDbnRfVG9rZW46U0I5TGJGQ1E2b3hLcmd4a1VsUmNnblpJblVoXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
-
+Modify these four files under the `example\lekiwi` directory
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/7d986d5798104ba79a1507d889309989.png)
 #### ①修改teleoperate.py
 
 remote_ip: IP address of Raspberry Pi
 
 port: Port Number when the active arm is connected to a computer or Linux
 
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTNmYWZmZWY3NTM0YmNiMDEwY2E5NzhhZjA3ZjNlNmFfWjNjVHAxYkw1OXBCVk1ReVJCdUF0N0Q4aDVKM0IycWFfVG9rZW46SERyTGJhOGd5b2I2SVR4dVZYaWNXRXNTbkhjXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
-
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/cc5e624c15be498d85e178c4aaca7c31.png)
 #### ②Modify record.py
 
 HF_REPO_ID:[Username and Dataset Name on Hugging Face](https://juxitech.feishu.cn/docx/DXtPd0iF1oO3aGxRChBcL3LSnFh?fromScene=spaceOverview#doxcnsAUzU1e1l6XIM07OE8grYg)
@@ -348,16 +358,13 @@ HF_REPO_ID:[Username and Dataset Name on Hugging Face](https://juxitech.feishu.c
 remote_ip: IP address of Raspberry Pi
 
 port: Port Number when the active arm is connected to a computer or Linux
-
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=NTNjNjFiMzE0YTcyYWQ2YTg5NzZhNzU2NTUwZDg5ZjZfVTlQN2NOYUtReXA4blN5MmpFMjJ5S0s0UEJwb0cydGJfVG9rZW46SHNaSGJNb2xibzI0OWJ4d3ZiNWNxWVAwbkVmXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
-
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/c7f1626aa4ac4df2b63daa71f60c3547.png)
 #### ③Modify replay.py
 
 remote_ip: IP address of Raspberry Pi
 
 <hf_username>/<dataset_repo_id>, i.e., [the Hugging Face username and dataset name](https://juxitech.feishu.cn/docx/DXtPd0iF1oO3aGxRChBcL3LSnFh?fromScene=spaceOverview#doxcnsAUzU1e1l6XIM07OE8grYg)
-
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTZkZTJlNDRhNWUxOTM3NGIwZmZjY2RhMDI1MDhiOGFfV2JDYjdoM1M4V2NtWkJVUjlNOGhzZENUVjBrZkxWZkhfVG9rZW46T2pFWmJwVDBhb2xEdnB4NnhqUWNMR3VDblJkXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/ff7a00276a864ec4b51937768e14dda7.png)
 
 ## Calibration
 
@@ -387,8 +394,9 @@ We unified the calibration methods for most robots. First, we need to move the r
 # F. Remote Operation
 
 Open a new Anaconda Prompt
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/160b4f4d81174009999120deb9842909.png)
 
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTBmOWM1MzZkOWMwZGI0YWYwN2RiYzcxMzk1OTA0OWFfUGNiTUhJSHFQUGlTS0JjUTY5S3FhYVFmV2d1Y0t2STBfVG9rZW46WEs4TWJzTWRQb2NvSXl4TnQ4MGNPamNpbndlXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
+
 
 > If you are using a Mac, you may need to grant "Terminal" permission to access the keyboard for remote operations. Please go to "System Preferences" > "Security & Privacy" > "Input Monitoring", and then check the "Terminal" checkbox. 
 
@@ -398,7 +406,8 @@ To perform remote operations, log in to your Raspberry Pi via SSH and run the fo
 python -m lerobot.robots.lekiwi.lekiwi_host --robot.id=my_awesome_kiwi
 ```
 
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=OWZhMjA3NzdmZjU1NTcyN2NiY2Q3ZGVhZjg1NDNlYTlfV1NTUHhuOWduSG95SnVVOWdVOXVWS2t3QXRXRTFDNkZfVG9rZW46SmVGcGJyazJnb2F4bG94WktkTWNtNGI1bnhkXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/e87f4ab823284a85904ea9ae686c71b6.png)
+
 
 Next, on your laptop, also run the following command to activate the environment `conda activate lerobot`, and then run the following script:
 
@@ -429,7 +438,7 @@ If you use a different keyboard, you can change the key settings for each comman
 
 ## Communication Fault Troubleshooting 
 
-If you encounter problems when connecting to the mobile robot SO101, please follow the steps below to diagnose and resolve the issue. 
+> If you encounter problems when connecting to the mobile robot SO101, please follow the steps below to diagnose and resolve the issue.
 
 ### 1. Verify IP address configuration
 
@@ -579,8 +588,8 @@ HF_MODEL_ID="<hf_username>/<model_repo_id>" should be modified to the name of th
 HF_DATASET_ID = "< hf_username >/< eval_dataset_id >" Change the username and eval_ dataset name you created
 
 remote_ip: Raspberry Pi IP address
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/0bc52c5e17a14b6590f40ab865db6629.png)
 
-![img](https://juxitech.feishu.cn/space/api/box/stream/download/asynccode/?code=YzNjZjQ2MTBmYjJjMjhmYWUwYzU4NTE3ZTU4NmMzOGJfZVBEUkNvRDExVnJRd3RPTVRtbDg3MnhtS096Y0c1Tk1fVG9rZW46UVdqYmJQNmVqb2o3TE54SGE3cWN4UHpvblFMXzE3NzkxMDg4MTY6MTc3OTExMjQxNl9WNA)
 
 Then run the following command: 
 
@@ -593,9 +602,9 @@ python examples/lekiwi/evaluate.py
 
 Simulation training can refer to
 
-https://github.com/Ekumen-OS/lekiwi/tree/main
+[https://github.com/Ekumen-OS/lekiwi/tree/main](https://github.com/Ekumen-OS/lekiwi/tree/main)
 
-https://github.com/SIGRobotics-UIUC/LeKiwi-sim
+[https://github.com/SIGRobotics-UIUC/LeKiwi-sim](https://github.com/SIGRobotics-UIUC/LeKiwi-sim)
 
 ## Help 🙋 
 
